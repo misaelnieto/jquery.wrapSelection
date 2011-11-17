@@ -1,13 +1,17 @@
 <html>
 <head>
   <title>JQuery WrapSelection plugin - Test Page</title>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
-  <script type="text/javascript" src="jquery.wrapSelection.js"></script>
+  <link rel="stylesheet" type="text/css" href="reset.css" />
+  <link rel="stylesheet" type="text/css" href="styles.css" />
   <style>
     .highlight {
       background-color:#FFFF88;
     }
   </style>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+  <script type="text/javascript" src="jquery.wrapSelection.js"></script>
+  <script type="text/javascript" src="test.js"></script>
+
 </head>
 
 <body>
@@ -18,7 +22,19 @@
   jquery page.</a> This is just a copy that I keep around for my own
   projects and testing.
   </p>
+
+  <div id="buttons">
+      <ul class="buttons">
+          <li id="toggle">Enable highlighter</li>
+          <li id="mark">Mark</li>
+          <li id="unmark">Delete marks</li>
+      </ul>
+  </div>
+
+  <h3>Test Area is Below</h3>
+  <hr/>
   
+  <div id="test_area">
   <h2>Curabitur nunc purus, laoreet ac lobortis at</h2>
   <p>Lacinia quis leo. Cras lorem nulla, scelerisque eu lacinia ut,
   sagittis sit amet ipsum. Vivamus massa nibh, rhoncus non lobortis
@@ -55,5 +71,6 @@
   pretium tristique ornare. Morbi eget viverra mi. Nam
   ornare, </span>velit ut convallis gravida, erat lacus porttitor
   lacus, elementum vestibulum magna turpis aliquet tellus. </div>
+  </div>
 </body>
 </html>
