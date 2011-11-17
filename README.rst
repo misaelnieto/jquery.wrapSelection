@@ -44,9 +44,7 @@ Example Breakdown of Plugin
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following is a basic html p tag and "|" marks the start and the
-end of the selection.
-
-.. code-block:: html
+end of the selection::
 
   <p>
     A
@@ -54,9 +52,7 @@ end of the selection.
     examp|le.
   </p>
 
-Use the following jQuery:
-
-.. code-block:: javascript
+Use the following jQuery::
 
   $(document).ready(function(){
     $('p').bind("mouseup", function(){
@@ -64,9 +60,7 @@ Use the following jQuery:
     });
   });
 
-The following is the HTML results:
-
-.. code-block:: html
+The following is the HTML results::
 
   <p>
     A
@@ -84,16 +78,12 @@ How to Use wrapSelection
 
 .. Note:: This assumes that the CSS class "h1" is already defined.
 
-1. Include the jQuery and wrapSelection to the page.
-
-.. code-block:: html
+1. Include the jQuery and wrapSelection to the page.::
 
    <script type="text/javascript" src="jquery.js"> </script>
    <script type="text/javascript" src="jquery.wrapSelection.js"> </script>
 
-2. Bind wrapSelection to a mouseup event like the following:
-
-.. code-block:: javascript
+2. Bind wrapSelection to a mouseup event like the following::
 
    $(document).ready(function(){
      $('#container').bind("mouseup", function(){
@@ -105,9 +95,7 @@ Restricting Selection to an Element
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Change the above code to include a selector. Only include one element,
-additional elements will fail miserably; So, don't use more than one!
-
-.. code-block:: javascript
+additional elements will fail miserably; So, don't use more than one!::
 
    $('#selectable').wrapSelection().addClass('h1');
 
@@ -117,9 +105,7 @@ wrapSelection Options Parameters
 There are two optional parameters to wrapSelection, Snap to Word
 (fitToWord) and Range Object(wrapRange).
 
-Add options using the following syntax.
-
-.. code-block:: javascript
+Add options using the following syntax.::
 
    $().wrapSelection({
        fitToWord: false,
@@ -147,21 +133,21 @@ default. If a range object is passed, it will use that object to
 create the wrapSelection.
 
 Note when Chaining, selectors do not chain nicely with
-wrapSelection. For example:
-
-.. code-block:: javascript
+wrapSelection. For example::
 
    $('#container').bind("mouseup", function(){
      $('h3').addClass('header3').wrapSelection().addClass('h1');
    });
 
+ - Binded to the element with an id of container
 
-    Binded to the element with an id of container
-    Selector on all h3's adding a class of 'header3'
-    wrapSelection() creates xhtml span tags with the class h1 around the selection triggered in the element "container"
+ - Selector on all ``h3`` 's adding a class of ``header3``
+
+ - ``wrapSelection()`` creates xhtml span tags with the class h1 around
+   the selection triggered in the element "container"
 
 The commands to the left of ``wrapSelector`` is applied to elements
-found by the h3 selector. All commands to the right of wrapSelector is
+found by the ``h3`` selector. All commands to the right of wrapSelector is
 applied to the span tags that were created.  
 
 getRangeAt()
@@ -170,9 +156,7 @@ ____________
 Returns a custom range object, that wrapSelection can use. It is
 called in the same manner as wrapSelection, with an element container
 ``$('#container').getRangeAt()`` or the entire document
-``$().getRangeAt()``.
-
-.. code-block:: javascript
+``$().getRangeAt()``::
 
    $(document).ready(function(){
      $('#container').bind("mouseup", function(){
@@ -180,9 +164,7 @@ called in the same manner as wrapSelection, with an element container
      });
    });
 
-Another function can call wrapSelection like this.
-
-.. code-block:: javascript
+Another function can call wrapSelection like this::
 
    $().wrapSelection({wrapRange : myRange});
 
