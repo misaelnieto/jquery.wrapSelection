@@ -20,7 +20,7 @@
 		//Verify what container the selection is allowed in.
 		//Check if First node Selection is in selectionParent
 		//Assume mouseUp is in the selectionParent (or last node)
-		if (this[0] == document) {// Skips check if called like $().wrapSelection
+		if (this[0] === document) {// Skips check if called like $().wrapSelection
 			// Do nothing
 		}
 		else{
@@ -28,7 +28,7 @@
 			var checkLast = $(range.endContainer).parents().index(selectionParent);
 
 			// restrict range to a specific container
-			if ( checkFirst == -1 || checkLast == -1 ) {
+			if ( checkFirst === -1 || checkLast === -1 ) {
 				range.ClearVariables();
 				return false;
 			}
@@ -91,8 +91,8 @@
 
 		function SplitText() {
 			var range = $.fn.range;
-			var myIsSameNode = (range.startContainer == range.endContainer);
-			if (range.startContainer.nodeType == 3 && range.startOffset > 0) {
+			var myIsSameNode = (range.startContainer === range.endContainer);
+			if (range.startContainer.nodeType === 3 && range.startOffset > 0) {
 				var myNew = range.startContainer.splitText(range.startOffset);
 
 				//if they're the same node, we want to make sure to assign the end to the
@@ -104,7 +104,7 @@
 				range.startContainer = myNew;
 				range.startOffset = 0;
 			}
-			if (range.endContainer.nodeType == 3 && range.endOffset < range.endContainer.length) {
+			if (range.endContainer.nodeType === 3 && range.endOffset < range.endContainer.length) {
 				range.endContainer.splitText(range.endOffset);
 				range.endOffset = range.endContainer.length;
 			}
@@ -139,7 +139,7 @@
 				}
 			}
 			if (opts.regexWordCharacterBasic.test(myChar)) {//go forward
-				if (myType == 'normal') {
+				if (myType === 'normal') {
 					var myNormal = getNextChar(myContainer, myOffset - 1);
 					if (opts.regexWordCharacterFull.test(myNormal.character)) {
 						return fitToEndWord(myNormal.container,
@@ -151,7 +151,7 @@
 			}
 
 			//possibly go back or forward, depending on context
-			else if (myType == 'normal' && opts.regexWordPunc.test(myChar)) {
+			else if (myType === 'normal' && opts.regexWordPunc.test(myChar)) {
 				var myNormal = getNextChar(myContainer, myOffset);
 
 				if (opts.regexWordNumbers.test(myNormal.character)) {
@@ -166,7 +166,7 @@
 
 			//otherwise go back
 			var myReverse = getPrevChar(myContainer, myOffset - 1);
-			if (myReverse.character.length == 1) {
+			if (myReverse.character.length === 1) {
 				return fitToEndWord(myReverse.container,
 					                 myReverse.offset + 1,
 									 'reverse');
@@ -181,7 +181,7 @@
 
 			//go back
 			if (opts.regexWordCharacterBasic.test(myChar)) {
-				if (myType == 'normal') {
+				if (myType === 'normal') {
 					var myPrev = getPrevChar(myContainer, myOffset);
 					if (opts.regexWordCharacterFull.test(myPrev.character)) {
 						return fitToStartWord(myPrev.container,
@@ -192,7 +192,7 @@
 				return {container: myContainer, offset: myOffset};
 			}
 			//possibly go back or forward, depending on context
-			else if (myType == 'normal' && opts.regexWordPunc.test(myChar)) {
+			else if (myType === 'normal' && opts.regexWordPunc.test(myChar)) {
 				var myPrev = getPrevChar(myContainer, myOffset);
 				if (opts.regexWordNumbers.test(myPrev.character)) {
 					return fitToStartWord(myPrev.container,
@@ -202,7 +202,7 @@
 			}
 
 			var myNext = getNextChar(myContainer, myOffset);
-			if (myNext.character.length == 1) {
+			if (myNext.character.length === 1) {
 				return fitToStartWord(myNext.container,
 				                       myNext.offset,
 									   'reverse');
@@ -312,7 +312,7 @@
 					//this works assuming there aren't any block-level
 					//elements contained in the lower element; so it should
 					//work for P, but not for UL
-					if (myParentName == 'DIV') {
+					if (myParentName === 'DIV') {
 						if (myNodes[i][j].nodeType != 1) {
 							continue;
 						}
@@ -420,7 +420,7 @@
 			var i = 0;
 
 			//while the current node is before
-			while ((myPosition & 4) || myPosition == 0) {
+			while ((myPosition & 4) || myPosition === 0) {
 				//the current node contains the end node
 				if (myPosition & 16) {
 					myNode = myNode.firstChild;
@@ -434,7 +434,7 @@
 					}
 					myNodes[i].push(myNode);
 					myNode = $.fn.wrapSelection.dom.GetNextSiblingOrParent(myNode);
-					if (myPosition == 0) break;
+					if (myPosition === 0) break;
 				}
 				myPosition = $.fn.compareDocumentPosition(myNode, myEnd);
 			}
@@ -455,7 +455,7 @@
 
 		GetNextTextNode: function(myNode, myParent) {
 			while (myNode = $.fn.wrapSelection.dom.getNodeOrder(myNode, myParent, 'next')) {
-				if (myNode.nodeType == 3) {
+				if (myNode.nodeType === 3) {
 					return myNode;
 				}
 			}
@@ -472,7 +472,7 @@
 
 		GetPreviousTextNode: function(myNode, myParent) {
 			while (myNode = $.fn.wrapSelection.dom.getNodeOrder(myNode, myParent, 'previous')) {
-				if (myNode.nodeType == 3) return myNode;
+				if (myNode.nodeType === 3) return myNode;
 			}
 			return myNode;
 		},
@@ -499,19 +499,19 @@
 	
 		getNodeOrder: function(myNode, myParent, myOrder) {
 			//checkCurrent should usually only be called recursively
-			if (typeof myParent == 'undefined') myParent = document.body;
+			if (typeof myParent === 'undefined') myParent = document.body;
 			if (myNode.hasChildNodes()) {
-				return (myOrder == 'next') ? myNode.firstChild : myNode.lastChild;
+				return (myOrder === 'next') ? myNode.firstChild : myNode.lastChild;
 			}
-			if (myNode == myParent) {
+			if (myNode === myParent) {
 				return null;
 			}
-			var mySibling = (myOrder == 'next') ? 'nextSibling' : 'previousSibling';
+			var mySibling = (myOrder === 'next') ? 'nextSibling' : 'previousSibling';
 			if (myNode[mySibling]) {
 				return myNode[mySibling];
 			}
 			while (myNode = myNode.parentNode) {
-				if (myNode == myParent) {
+				if (myNode === myParent) {
 					return null;
 				}
 				if (myNode[mySibling]) {
@@ -547,7 +547,7 @@
 				var myStart = this.getInitialContainer(myRange.duplicate(), 'start');
 				var myStartIndex = $.fn.wrapSelection.dom.SourceIndex(myStart.container, 'string');
 				var myEnd = this.getInitialContainer(myRange.duplicate(), 'end');
-				if (myStartIndex == $.fn.wrapSelection.dom.SourceIndex(myEnd.container, 'string')) {
+				if (myStartIndex === $.fn.wrapSelection.dom.SourceIndex(myEnd.container, 'string')) {
 					myStart.container = myEnd.container;
 				}
 			
@@ -555,7 +555,7 @@
 				this.startOffset 	= myStart.offset;
 				this.endContainer 	= myEnd.container;
 				this.endOffset 		= myEnd.offset;
-				this.collapsed 	= (myStart.container == myEnd.container && myStart.offset == myEnd.offset);
+				this.collapsed 	= (myStart.container === myEnd.container && myStart.offset === myEnd.offset);
 			
 				// Fix Hightlight for IE that get's reset by getInitialContainer start node (myNode.insertData)
 				myRange.select();
@@ -563,7 +563,7 @@
 			},
 	
 			getInitialContainer: function(myRange, myType) {
-				if (myType == 'start') myRange.collapse(true); //collapse to start
+				if (myType === 'start') myRange.collapse(true); //collapse to start
 				else myRange.collapse(false); //collapse to end
 				var myParent = myRange.parentElement();
 				myRange.pasteHTML('<span id="range-temp"></span>');
@@ -576,15 +576,15 @@
 				}
 				myTemp.parentNode.removeChild(myTemp);
 				// Get's offset and merges adjacent textnodes together
-				if (myType == "start") {
-					if (myNode.previousSibling && myNode.previousSibling.nodeType == 3) {
+				if (myType === "start") {
+					if (myNode.previousSibling && myNode.previousSibling.nodeType === 3) {
 						var myPrev = myParent.removeChild(myNode.previousSibling);
 						myOffset += myPrev.length;
 						myNode.insertData(0, myPrev.nodeValue);
 					}
 				}
 				else {// End node
-					if (myNode.previousSibling && myNode.previousSibling.nodeType == 3) {
+					if (myNode.previousSibling && myNode.previousSibling.nodeType === 3) {
 						var myPrev = myNode.previousSibling;
 						myOffset += myPrev.length;
 						myParent.removeChild(myNode);
@@ -608,7 +608,7 @@
 					myOut.unshift(myOffset);
 				}
 				while (myNode = myNode.parentNode);
-				if (myType && myType == 'string') {
+				if (myType && myType === 'string') {
 					return myOut.join('.');
 				}
 				return myOut;
@@ -649,7 +649,7 @@
 					//otherwise, insert a comment (which has a sourceIndex but minimal DOM impact) before the node and use that
 					return node.parentNode.insertBefore(document.createComment(""), node);
 				}
-				if (node1 == node2) {
+				if (node1 === node2) {
 					return 0;
 				}
 				//if they don't have the same parent, there's a disconnect
@@ -661,10 +661,10 @@
 					return comparePosition(node1, node2);
 				}
 				//document will definitely contain the other node
-				if (node1 == document) {
+				if (node1 === document) {
 					return 20;
 				}
-				else if (node2 == document) {
+				else if (node2 === document) {
 					return 10;
 				}
 				//get sourceIndexes to use for both nodes
@@ -685,7 +685,7 @@
 			//takes the sortable string from getOffset
 			function compareOffsetStrings(offset1, offset2) {
 				//they're siblings or at the same depth
-				if (offset1.length == offset2.length) {
+				if (offset1.length === offset2.length) {
 					return (offset1 < offset2) ? 4 : 2;
 					}
 				//the first one is either a parent or at a shallower depth
@@ -693,7 +693,7 @@
 					//truncate the longer one
 					var offset2start = offset2.substr(0, offset1.length);
 					//if they're the same at this point, we know node1 is a parent
-					if (offset1 == offset2start) return 20;
+					if (offset1 === offset2start) return 20;
 					//call itself again now that they're the same length
 					return compareOffsetStrings(offset1, offset2start);
 					}
@@ -734,14 +734,14 @@
 			//Safari and others; will work in IE
 			//inspired by base2: http://code.google.com/p/base2/
 			$.fn.compareDocumentPosition = function(node1, node2) {
-				if (node1 == node2) return 0;
+				if (node1 === node2) return 0;
 				if (getRootParent(node1) != getRootParent(node2)) return 1;
 				//contains() only works if both are elements
-				if (node1 == document
+				if (node1 === document
 					|| ("contains" in node1 && "contains" in node2 && node1.contains(node2))) {
 					return 20;
 				}
-				else if (node2 == document
+				else if (node2 === document
 					|| ("contains" in node1 && "contains" in node2 && node2.contains(node1))) {
 					return 10;
 				}
