@@ -22,19 +22,19 @@ creates XHTML compliant span tags around the selection area.
 
 Features:
 
- - Cross Browser Selections (tested in IE, Firefox, Opera, Safari).
+  - Cross Browser Selections (tested in IE, Firefox, Opera, Safari).
 
- - Create function getRangeAt() to return custom range object
-    
- - Create a custom class to identify selections
-    
- - Ability to restrict selectable area to a tag (single element)
-    
- - jQuery plugin with limited chaining ability
-    
- - Must create XHTML compliant code
-    
- - Snaps to begining and end or word if selected in the middle of the word
+  - Create function getRangeAt() to return custom range object
+
+  - Create a custom class to identify selections
+
+  - Ability to restrict selectable area to a tag (single element)
+
+  - jQuery plugin with limited chaining ability
+
+  - Must create XHTML compliant code
+
+  - Snaps to begining and end or word if selected in the middle of the word
 
 
 Documentation for wrapSelection()
@@ -56,7 +56,7 @@ Use the following jQuery::
 
   $(document).ready(function(){
     $('p').bind("mouseup", function(){
-	$().wrapSelection().addClass('h1');
+      $().wrapSelection().addClass('h1');
     });
   });
 
@@ -80,16 +80,16 @@ How to Use wrapSelection
 
 1. Include the jQuery and wrapSelection to the page.::
 
-   <script type="text/javascript" src="jquery.js"> </script>
-   <script type="text/javascript" src="jquery.wrapSelection.js"> </script>
+  <script type="text/javascript" src="jquery.js"> </script>
+  <script type="text/javascript" src="jquery.wrapSelection.js"> </script>
 
 2. Bind wrapSelection to a mouseup event like the following::
 
-   $(document).ready(function(){
-     $('#container').bind("mouseup", function(){
-	 $().wrapSelection().addClass('h1');
-     });
-   });
+  $(document).ready(function(){
+    $('#container').bind("mouseup", function(){
+      $().wrapSelection().addClass('h1');
+    });
+  });
 
 Restricting Selection to an Element
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -97,7 +97,7 @@ Restricting Selection to an Element
 Change the above code to include a selector. Only include one element,
 additional elements will fail miserably; So, don't use more than one!::
 
-   $('#selectable').wrapSelection().addClass('h1');
+  $('#selectable').wrapSelection().addClass('h1');
 
 wrapSelection Options Parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -107,10 +107,10 @@ There are two optional parameters to wrapSelection, Snap to Word
 
 Add options using the following syntax.::
 
-   $().wrapSelection({
-       fitToWord: false,
-       wrapRange: rangeObj
-   });
+  $().wrapSelection({
+    fitToWord: false,
+    wrapRange: rangeObj
+  });
 
 
 Turning off Snap to word
@@ -135,16 +135,16 @@ create the wrapSelection.
 Note when Chaining, selectors do not chain nicely with
 wrapSelection. For example::
 
-   $('#container').bind("mouseup", function(){
-     $('h3').addClass('header3').wrapSelection().addClass('h1');
-   });
+  $('#container').bind("mouseup", function(){
+    $('h3').addClass('header3').wrapSelection().addClass('h1');
+  });
 
- - Binded to the element with an id of container
+  - Binded to the element with an id of container
 
- - Selector on all ``h3`` 's adding a class of ``header3``
+  - Selector on all ``h3`` 's adding a class of ``header3``
 
- - ``wrapSelection()`` creates xhtml span tags with the class h1 around
-   the selection triggered in the element "container"
+  - ``wrapSelection()`` creates xhtml span tags with the class h1 around
+    the selection triggered in the element "container"
 
 The commands to the left of ``wrapSelector`` is applied to elements
 found by the ``h3`` selector. All commands to the right of wrapSelector is
@@ -158,13 +158,13 @@ called in the same manner as wrapSelection, with an element container
 ``$('#container').getRangeAt()`` or the entire document
 ``$().getRangeAt()``::
 
-   $(document).ready(function(){
-     $('#container').bind("mouseup", function(){
-	 var myRange = $().getRangeAt();
-     });
-   });
+  $(document).ready(function(){
+    $('#container').bind("mouseup", function(){
+    var myRange = $().getRangeAt();
+    });
+  });
 
 Another function can call wrapSelection like this::
 
-   $().wrapSelection({wrapRange : myRange});
+  $().wrapSelection({wrapRange : myRange});
 
