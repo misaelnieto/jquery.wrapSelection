@@ -31,7 +31,7 @@
 			if ( checkFirst == -1 || checkLast == -1 ) {
 				range.ClearVariables();
 				return false;
-			};
+			}
 		}
 		//// set commonAncestorContainer
 		//var commonAncestorContainer = $(range.startContainer).parents().filter(
@@ -174,7 +174,7 @@
 			else {
 				return {container: myContainer, offset: myOffset};
 			}
-		};
+		}
 
 		function fitToStartWord(myContainer, myOffset, myType) {
 			var myChar = myContainer.nodeValue.substr(myOffset, 1);
@@ -341,7 +341,7 @@
 			var mySpan = document.createElement('span');
 			mySpan.className = opts.selectClass;
 			return mySpan;
-		};
+		}
 	};// END wrapSelection
 
     $.fn.range = {
