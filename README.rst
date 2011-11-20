@@ -12,13 +12,13 @@ Original documentation
 Overview
 --------
 
-``wrapSelection`` wraps highlighted text with valid XHTML span tags
-and returns as a jQuery object for chaining additional commands.
+``wrapSelection`` wraps highlighted text with valid XHTML span tags.
+Returns a jQuery object for chaining additional commands.
 
-Originally designed to allow end users to select text (highlight text
-with their mouse) and change the background style. Unlike other
-solutions that apply to the whole element, this creates XHTML
-compliant span tags around the selection area.
+It was originally designed to allow end users to select text
+(highlight text with their mouse) and change the background
+style. Unlike other solutions that apply to the whole element, this
+creates XHTML compliant span tags around the selection area.
 
 Features:
 
@@ -37,8 +37,8 @@ Features:
  - Snaps to begining and end or word if selected in the middle of the word
 
 
-wrapSelection()
----------------
+Documentation for wrapSelection()
+---------------------------------
 
 Example Breakdown of Plugin
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
