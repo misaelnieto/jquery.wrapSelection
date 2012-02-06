@@ -6,3 +6,9 @@
 * Peterson
 */
 
+$(document).ready(function(){
+    $('#test_area').mouseup(function(){
+		$(this).wrapSelection().addClass('highlighted');
+    });
+});
+
