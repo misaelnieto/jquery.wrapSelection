@@ -39,12 +39,6 @@
                 return false;
             }
         }
-        //// set commonAncestorContainer
-        //var commonAncestorContainer = $(range.startContainer).parents().filter(
-            //function () {
-                //return $(range.endContainer).parents().index(this) != -1;
-            //})[0];
-        //selRange.commonAncestorContainer	= commonAncestorContainer;
         // returns range object, no chaining when getting Range
         return range;
     };
